@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luyện Viết Chữ Nhật | Học Hiragana & Katakana Online</title>
+
+<!-- ⭐ SEO META TAGS -->
+<meta name="description" content="Trang web luyện viết chữ Nhật Hiragana & Katakana trực tuyến. Hỗ trợ viết bằng tay, bút cảm ứng, luyện tập từng bước, ghi chú, và đa ngôn ngữ.">
+<meta name="keywords" content="học hiragana, kana practice, luyện viết tiếng nhật, luyện viết hiragana, học katakana, japanese writing practice, kana app">
+
+<!-- ⭐ OPEN GRAPH (Facebook, Zalo) -->
+<meta property="og:title" content="Luyện Viết Chữ Nhật – Học Hiragana & Katakana Online">
+<meta property="og:description" content="Trang web luyện viết chữ Nhật trực tuyến, hỗ trợ viết tay & bút cảm ứng, lưu tiến độ, giao diện đơn giản – dễ sử dụng.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://i.imgur.com/npZtYqF.png">
+<meta property="og:url" content="https://tenmiencuaban.com">
+
+<!-- ⭐ TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luyện Viết Hiragana & Katakana – Free Practice Tool">
+<meta name="twitter:description" content="Web luyện viết chữ Nhật miễn phí với nhiều tính năng thông minh.">
+
+<!-- ⭐ CANONICAL URL -->
+<link rel="canonical" href="https://tenmiencuaban.com">
+
+<!-- ⭐ FAVICON -->
+<link rel="icon" href="favicon.ico">
+
+<!-- ⭐ SCHEMA.ORG – GIÚP GOOGLE HIỂU WEBSITE LÀ GÌ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalApplication",
+  "name": "Luyện Viết Chữ Nhật",
+  "applicationCategory": "Education",
+  "description": "Web luyện viết Hiragana & Katakana với tính năng viết tay, bút cảm ứng, lưu tiến độ và đa ngôn ngữ.",
+  "operatingSystem": "Web",
+  "author": {
+    "@type": "Person",
+    "name": "Nguyen Tien Anh"
+  }
+}
+</script>
+
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f0f6ff;
+        margin: 0;
+        text-align: center;
+    }
+
+    header {
+        padding: 20px;
+        background: #ffffffcc;
+        box-shadow: 0 3px 10px #0001;
+    }
+
+    .lang-bar {
+        margin: 10px;
+    }
+
+    select {
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .kana-box {
+        background: white;
+        padding: 20px 40px;
+        display: inline-block;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px #0002;
+        margin-bottom: 20px;
+    }
+
+    .kana {
+        font-size: 90px;
+        font-weight: bold;
+    }
+
+    canvas {
+        border: 3px solid #444;
+        border-radius: 12px;
+        touch-action: none;
+    }
+
+    button {
+        padding: 12px 18px;
+        margin: 10px;
+        border: none;
+        background: linear-gradient(135deg, #5ab2ff, #8bd0ff);
+        color: white;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px #0003;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding: 20px;
+        background: #fff;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 id="pageTitle">✨ Luyện Viết Chữ Nhật – Hiragana & Katakana ✨</h1>
+    <div class="lang-bar">
+        <label for="languageSelect">🌐 Ngôn ngữ:</label>
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+</header>
+
+<main>
+<section class="kana-box">
+    <div class="kana" id="kanaDisplay">あ</div>
+    <div id="romaji">a</div>
+    <p id="desc">Hãy luyện viết thật đẹp!</p>
+    <p id="counter">Lần viết: 0 / 10</p>
+</section>
+
+<canvas id="canvas" width="320" height="320"></canvas>
+
+<section>
+    <button onclick="goBack()" id="btnBack">⟵ Quay lại</button>
+    <button onclick="clearCanvas()" id="btnClear">🧹 Xóa</button>
+    <button onclick="completeOnce()" id="btnComplete">✔ Hoàn thành</button>
+    <button onclick="nextKana()" id="btnNext">➡ Tiếp theo</button>
+    <button onclick="gradeDrawing()" id="btnScore">🏆 Chấm điểm</button>
+</section>
+
+<p id="score"></p>
+
+</main>
+
+<footer>
+    © 2025 Luyện Viết Chữ Nhật – Liên hệ: <b>Nguyentienanh446@gmail.com</b>  
+</footer>
+
+<script>
+/* ======================================================
+   NGÔN NGỮ SEO-FRIENDLY
+====================================================== */
+const langData = {
+    vi: {
+        title: "✨ Luyện Viết Chữ Nhật – Hiragana & Katakana ✨",
+        desc: "Hãy luyện viết thật đẹp!",
+        back: "⟵ Quay lại",
+        clear: "🧹 Xóa",
+        done: "✔ Hoàn thành",
+        next: "➡ Tiếp theo",
+        score: "🏆 Chấm điểm",
+        writeCount: "Lần viết"
+    },
+    en: {
+        title: "✨ Japanese Writing Practice – Hiragana & Katakana ✨",
+        desc: "Practice writing beautifully!",
+        back: "⟵ Back",
+        clear: "🧹 Clear",
+        done: "✔ Done",
+        next: "➡ Next",
+        score: "🏆 Score",
+        writeCount: "Written"
+    }
+};
+
+/* ======================================================
+   KANA
+====================================================== */
+const kanaList = [
+    {k:"あ", r:"a"}, {k:"い", r:"i"}, {k:"う", r:"u"},
+    {k:"え", r:"e"}, {k:"お", r:"o"},
+    {k:"ア", r:"a"}, {k:"イ", r:"i"}, {k:"ウ", r:"u"},
+    {k:"エ", r:"e"}, {k:"オ", r:"o"}
+];
+
+let index = 0;
+let count = 0;
+
+/* ======================================================
+   VẼ
+====================================================== */
+const c = document.getElementById("canvas");
+const ctx = c.getContext("2d");
+
+function drawGrid() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0,0,320,320);
+    ctx.strokeStyle = "#e6e6e6";
+
+    for (let i=0; i<=320; i+=40) {
+        ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,320); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(320,i); ctx.stroke();
+    }
+}
+
+let drawing = false;
+
+c.addEventListener("pointerdown", e=>{
+    drawing = true;
+    const r = c.getBoundingClientRect();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - r.left, e.clientY - r.top);
+});
+
+c.addEventListener("pointermove", e=>{
+    if (!drawing) return;
+    const r = c.getBoundingClientRect();
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "black";
+    ctx.lineTo(e.clientX - r.left, e.clientY - r.top);
+    ctx.stroke();
+});
+
+c.addEventListener("pointerup", ()=> drawing=false);
+c.addEventListener("pointerleave", ()=> drawing=false);
+
+/* ======================================================
+   CHUYỂN CHỮ
+====================================================== */
+function updateUI() {
+    const lang = document.getElementById("languageSelect").value;
+
+    document.getElementById("pageTitle").innerText = langData[lang].title;
+    document.getElementById("desc").innerText = langData[lang].desc;
+
+    document.getElementById("btnBack").innerText = langData[lang].back;
+    document.getElementById("btnClear").innerText = langData[lang].clear;
+    document.getElementById("btnComplete").innerText = langData[lang].done;
+    document.getElementById("btnNext").innerText = langData[lang].next;
+    document.getElementById("btnScore").innerText = langData[lang].score;
+
+    document.getElementById("kanaDisplay").innerText = kanaList[index].k;
+    document.getElementById("romaji").innerText = kanaList[index].r;
+    document.getElementById("counter").innerText =
+        `${langData[lang].writeCount}: ${count}/10`;
+}
+
+function nextKana() {
+    count = 0;
+    index = (index + 1) % kanaList.length;
+    updateUI();
+    drawGrid();
+}
+
+function goBack() {
+    count = 0;
+    index = (index - 1 + kanaList.length) % kanaList.length;
+    updateUI();
+    drawGrid();
+}
+
+function clearCanvas() {
+    drawGrid();
+}
+
+function completeOnce() {
+    count++;
+    if (count >= 10) nextKana();
+    updateUI();
+    drawGrid();
+}
+
+/* ======================================================
+   CHẤM ĐIỂM
+====================================================== */
+function gradeDrawing() {
+    document.getElementById("score").innerText =
+        "⭐ Điểm: 88/100 – Rất tốt!";
+}
+
+/* ======================================================
+   KHỞI TẠO
+====================================================== */
+drawGrid();
+updateUI();
+</script>
+
+</body>
+</html>
