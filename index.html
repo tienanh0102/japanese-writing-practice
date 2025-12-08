@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Luyện Viết Chữ Nhật | Học Hiragana & Katakana Online</title>
+
+<meta name="description" content="Trang web luyện viết chữ Nhật Hiragana & Katakana và chữ cái Hàn Quốc Hangul trực tuyến. Hỗ trợ viết bằng tay, bút cảm ứng, luyện tập từng bước, và đa ngôn ngữ.">
+<meta name="keywords" content="học hiragana, kana practice, luyện viết tiếng nhật, luyện viết hiragana, học katakana, japanese writing practice, kana app, học hangul, chữ cái hàn quốc">
+
+<meta property="og:title" content="Luyện Viết Chữ Nhật & Chữ Cái Hàn Quốc Online">
+<meta property="og:description" content="Trang web luyện viết chữ Nhật (Hiragana, Katakana) và chữ cái Hàn Quốc (Hangul), hỗ trợ bút cảm ứng, giao diện đơn giản dễ dùng.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://i.imgur.com/npZtYqF.png">
+
+<link rel="canonical" href="https://tenmiencuaban.com">
+<link rel="icon" href="favicon.ico">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+    <h1 id="pageTitle">✨ Luyện Viết Chữ Nhật – Hiragana & Katakana ✨</h1>
+
+    <div class="lang-bar">
+        <label for="languageSelect">🌐 Ngôn ngữ giao diện:</label>
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <div class="script-bar">
+        <label for="scriptSelect">✏ Bảng chữ luyện viết:</label>
+        <select id="scriptSelect" onchange="changeScript()">
+            <option value="jp">Nhật – Kana (Hiragana & Katakana)</option>
+            <option value="kr">Hàn – Hangul</option>
+        </select>
+    </div>
+</header>
+
+<main>
+<section class="kana-box">
+    <div class="kana" id="kanaDisplay">あ</div>
+    <div id="romaji">a</div>
+    <p id="desc">Hãy luyện viết thật đẹp!</p>
+    <p id="counter">Lần viết: 0 / 10</p>
+</section>
+
+<canvas id="canvas" width="320" height="320"></canvas>
+
+<section>
+    <button onclick="goBack()" id="btnBack">⟵ Quay lại</button>
+    <button onclick="clearCanvas()" id="btnClear">🧹 Xóa</button>
+    <button onclick="completeOnce()" id="btnComplete">✔ Hoàn thành</button>
+    <button onclick="nextKana()" id="btnNext">➡ Tiếp theo</button>
+    <button onclick="gradeDrawing()" id="btnScore">🏆 Chấm điểm</button>
+    <!-- Nút mới: phát âm -->
+    <button onclick="playPronunciation()" id="btnSpeak">🔊 Phát âm</button>
+</section>
+
+
+<p id="score"></p>
+</main>
+
+<footer>
+    © 2025 Luyện Viết Chữ Nhật & Hàn Quốc – Liên hệ: <b>Nguyentienanh446@gmail.com</b>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
